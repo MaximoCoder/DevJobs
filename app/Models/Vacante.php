@@ -23,7 +23,7 @@ class Vacante extends Model
         return $this->belongsTo(Categoria::class);
     }
     public function candidatos(){
-        return $this->hasMany(Candidato::class);
+        return $this->hasMany(Candidato::class)->orderBy('created_at', 'desc');
     }
     public function reclutador(){
         return $this->belongsTo(User::class, 'user_id');
