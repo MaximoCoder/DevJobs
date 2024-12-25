@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CandidatoController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NotificacionController;
 use Livewire\Livewire;
 use Illuminate\Support\Facades\Route;
@@ -20,9 +21,7 @@ use App\Http\Controllers\VacanteController;
 // Notificaciones
 Route::get('/notificaciones', NotificacionController::class)->middleware(['auth', 'verified', 'rol.reclutador'])->name('notificaciones.index');
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', HomeController::class)->name('home');
 // Ruta para el index de reclutador
 Route::get('/dashboard',[VacanteController::class,'index'])->middleware(['auth', 'verified', 'rol.reclutador'])->name('vacantes.index'); // Ruta inicio
 Route::get('/vacantes/create',[VacanteController::class,'create'])->middleware(['auth', 'verified'])->name('vacantes.create'); // Ruta para crear vacantes
